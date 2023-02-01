@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;700&display=swap');
+
+*{
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    text-decoration: none;
+    transition: all .5s ease-out;
+}
+
+body{
+    background-color:#c7d2df;
+}
+
+.logo{
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 1rem;
+}
+
+#sakums{
+    text-align: center;
+}
+
+.table{
+    margin-left: 7rem;
+    
+}
+
+.content{
+    text-align: center;
+    margin-left:  45%;
+    padding-top: 1rem;
+}
