@@ -44,3 +44,15 @@ header{
     color: #ffffff;
 
 }
+.button:hover{
+    font-size: 1.1rem;
+}
+
+.button {
+    border: none;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    font-size: 1rem;
+    cursor: pointer;
+}
