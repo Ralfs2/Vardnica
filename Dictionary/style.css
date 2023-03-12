@@ -33,7 +33,7 @@ body{
 .content{
     text-align: center;
     margin-left:  45%;
-    padding-top: 7rem;
+    padding-top: 8rem;
 }
 header{
     width: 100%;
@@ -50,9 +50,98 @@ header{
 
 .button {
     border: none;
-    color: white;
+    color: ffffff;
     text-decoration: none;
-    display: flex;
     font-size: 1rem;
     cursor: pointer;
+}
+#navbar b{
+    color: ffffff;
+}
+
+.alert{
+    font-size: 2rem;
+    text-align: center;
+    margin: 5rem;
+    padding: 3rem;
+    color: #292929;
+    border-radius: .5rem;
+}
+
+.red{
+    background: #a14141;
+}
+
+
+/*--------------------------------------------------*/
+#pieteiksanas{
+    padding:2rem 15%;
+}
+
+#pieteiksanas .row{
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+#pieteiksanas .row form{
+    flex:1 1 45rem;
+    padding:2rem;
+    border: .1rem solid rgba(0,0,0,.1);
+    box-shadow: 0 .5rem 1,5rem rgba(0,0,0,.1);
+    border-radius: .5rem;
+    background-color: #5caad428;
+    margin-top: 1rem;
+    padding-top: 2rem;
+}
+
+#pieteiksanas .row form .box1{
+    margin:.7rem 0;
+    padding: 1rem;
+    font-size: 1rem;
+    color: #000;
+    border-radius: .5rem;
+    border: .1rem solid rgba(0,0,0,.1);
+    background: #ffffff;
+    text-transform: none;
+
+}
+
+#pieteiksanas .row form .box2{
+    margin:.7rem 0;
+    padding: 1rem;
+    font-size: 1.6rem;
+    color:white;
+    border-radius: .5rem;
+    border: .1rem solid rgba(0,0,0,.1);
+    background: #c7d2df;
+    text-transform: none;
+    width: 100%;
+}
+
+#pieteiksanas .row form .box2:focus{
+    background: #000;
+}
+
+#pieteiksanas .row form textarea{
+    height: 20rem;
+    resize: none;
+}
+
+#pieteiksanas .row form .btn:hover{
+    background: #c7d2df;
+}
+/*--------------------------------------------------*/
+
+.btn{
+    margin-top: 1rem;
+    display: inline-block;
+    padding:.8rem 3rem;
+    font-size: 1rem;
+    cursor: pointer;
+    color:#000;
+    background:#fff;
+    border-radius: .5rem;
+    box-shadow: 0 .5rem 1,5rem rgba(0,0,0,.1);
 }

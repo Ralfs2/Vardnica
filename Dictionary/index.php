@@ -12,8 +12,12 @@
 <body>
     <header>
         <h3 class="logo">Abbreviation dictionary</h3>
-
+        <nav id="navbar">
+            <a class="button" href="login.php">Login</a>
+        </nav>
     </header>
+
+
 
     <section id="sakums">
         <div class="content">
