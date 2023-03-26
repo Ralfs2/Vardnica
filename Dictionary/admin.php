@@ -27,11 +27,11 @@
             <?php 
                 echo $_SESSION['Name'];
             ?>
-        </b> <i class="fas fa-power-off"></i></a>
+         <i class="fas fa-power-off"></i> </b></a>
         </nav>
        
     </header>
-
+<div id="space1"></div>
 <!--...-->
 <div id="pieteiksanas">
     <?php 
@@ -48,7 +48,7 @@
 
 
                     mysqli_query($savienojums, $AddWord);
-                    header("Refresh: 0; url=index.php");
+                    header("Refresh: 0; url=admin.php");
                 }else{
                     echo "<div class='alarm red'>ERROR!</div>";
                 }
@@ -59,7 +59,7 @@
 
     <div class="row">
         <form method="post">
-            <input type="text" placeholder="Category name *" name="Category" class="box1" title="Category" required>
+            <input type="text" placeholder="Category name" name="Category" class="box1" title="Category" required>
             <input type="submit" name="gatavs" value="Submit" class="btn">
         </form>
     </div>
@@ -78,19 +78,19 @@
             if(isset($_POST['ready'])){
                 $Word = $_POST['Word'];
                 $Description = $_POST['Description'];
-                $Online_Source = $_POST['Online_source'];
+                $Online_source = $_POST['Online_source'];
                 $Letter = $_POST['Letter'];
-                $Category_ID = $_POST['Category_ID'];
 
 
-                if(!empty($Word) && !empty($Description) && !empty($Online_Source) && !empty($Letter) && !empty($Category_ID)){
-                    $AddWord = "INSERT INTO newdictionary(Word, Description, Online_source, Letter, Category_ID) VALUES ('$Word', '$Description', '$Online_Source', '$Letter', '$Category_ID')";
+                if(!empty($Word) && !empty($Description) && !empty($Online_source) && !empty($Letter)){
+                    $AddWordd = "INSERT INTO newdictionary(Word, Description, Online_source, Letter, Category_ID) VALUES ('$Word', '$Description', '$Online_source', '$Letter')";
 
 
-                    mysqli_query($savienojums, $AddWord);
-                    header("Refresh: 0; url=index.php");
+                    mysqli_query($savienojums, $AddWordd);
+                    header("Refresh: 0; url=admin.php");
                 }else{
                     echo "<div class='alarm red'>ERROR!</div>";
+                    header("Refresh: 5; url=admin.php");
                 }
             }else{
                                 
@@ -99,11 +99,21 @@
 
     <div class="row">
         <form method="post">
-            <input type="text" placeholder="Word *" name="Word" class="box1" title="Word" required>
-            <input type="text" placeholder="Description *" name="Description" class="box1" title="Description" required>
-            <input type="text" placeholder="Online_Source *" name="Online_Source" class="box1" title="Online_Source" required>
-            <input type="text" placeholder="Letter *" name="Letter" class="box1" title="Letter" required>
-            <input type="text" placeholder="Category_ID *" name="Category_ID" class="box1" title="Category_ID" required>
+            <input type="text" placeholder="Word" name="Word" class="box1" title="Word" required>
+            <input type="text" placeholder="Description" name="Description" class="box1" title="Description" required>
+            <input type="text" placeholder="Online_Source" name="Online_source" class="box1" title="Online_Source" required>
+            <input type="text" placeholder="Letter" name="Letter" class="box1" title="Letter" required>
+            <select name="category" id="category">
+                <?php
+                $catg = "SELECT * FROM `newcategory` ";
+            $sql = mysqli_query($savienojums, $catg); 
+               while($row = mysqli_fetch_array($sql)){
+                //Izvada visas kategorijas
+                echo "
+                <option value={$row['Category']}>{$row['Category']}</option>
+               ";}
+                ?>
+            </select>
             <input type="submit" name="ready" value="Submit" class="btn">
         </form>
     </div>
@@ -125,5 +135,12 @@
 
   
 ?>
+
+
+
+
+
+
+
 </body>
 </html>

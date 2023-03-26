@@ -30,6 +30,13 @@ body{
     padding-top: 9rem;
 }
 
+.table2{
+    margin-left: 7rem;
+    padding-top: 9rem;
+    font-size: 2rem;
+    text-align: center;
+    margin-left:  45%;
+}
 .content{
     text-align: center;
     margin-left:  45%;
@@ -50,13 +57,14 @@ header{
 
 .button {
     border: none;
-    color: ffffff;
+    color: #ffffff;
     text-decoration: none;
     font-size: 1rem;
     cursor: pointer;
+    padding-right: 1rem;
 }
 #navbar b{
-    color: ffffff;
+    color: #ffffff;
 }
 
 .alert{
@@ -75,7 +83,7 @@ header{
 
 /*--------------------------------------------------*/
 #pieteiksanas{
-    padding:2rem 15%;
+    padding:1rem 15%;
 }
 
 #pieteiksanas .row{
@@ -98,7 +106,7 @@ header{
 
 #pieteiksanas .row form .box1{
     margin:.7rem 0;
-    padding: 1rem;
+    padding: .5rem;
     font-size: 1rem;
     color: #000;
     border-radius: .5rem;
@@ -110,7 +118,7 @@ header{
 
 #pieteiksanas .row form .box2{
     margin:.7rem 0;
-    padding: 1rem;
+    padding: .5rem;
     font-size: 1.6rem;
     color:white;
     border-radius: .5rem;
@@ -137,11 +145,18 @@ header{
 .btn{
     margin-top: 1rem;
     display: inline-block;
-    padding:.8rem 3rem;
+    padding:.5rem 3rem;
     font-size: 1rem;
     cursor: pointer;
     color:#000;
     background:#fff;
     border-radius: .5rem;
     box-shadow: 0 .5rem 1,5rem rgba(0,0,0,.1);
+}
+#space1{
+    padding-top: 7rem;
+}
+#category{
+    padding:.5rem 3rem;
+    font-size: 1rem;
 }
