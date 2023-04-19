@@ -32,7 +32,7 @@
        
     </header>
 <div id="space1"></div>
-<!--...-->
+<!--..new_category..-->
 <div id="pieteiksanas">
     <?php 
    
@@ -59,7 +59,7 @@
 
     <div class="row">
         <form method="post">
-            <input type="text" placeholder="Category name" name="Category" class="box1" title="Category" required>
+            <input type="text" placeholder="Category name *" name="Category" class="box1" title="Category" required>
             <input type="submit" name="gatavs" value="Submit" class="btn">
         </form>
     </div>
@@ -70,7 +70,7 @@
         ?> 
 </div>
 
-<!--...-->
+<!--..add..-->
 
     <div id="pieteiksanas">
     <?php 
@@ -82,7 +82,7 @@
                 $Letter = $_POST['Letter'];
 
 
-                if(!empty($Word) && !empty($Description) && !empty($Online_source) && !empty($Letter)){
+                if(!empty($Word) && !empty($Description) && !empty($Letter)){
                     $AddWordd = "INSERT INTO newdictionary(Word, Description, Online_source, Letter, Category_ID) VALUES ('$Word', '$Description', '$Online_source', '$Letter')";
 
 
@@ -99,10 +99,20 @@
 
     <div class="row">
         <form method="post">
-            <input type="text" placeholder="Word" name="Word" class="box1" title="Word" required>
-            <input type="text" placeholder="Description" name="Description" class="box1" title="Description" required>
-            <input type="text" placeholder="Online_Source" name="Online_source" class="box1" title="Online_Source" required>
-            <input type="text" placeholder="Letter" name="Letter" class="box1" title="Letter" required>
+            <input type="text" placeholder="Word *" name="Word" class="box1" title="Word" required>
+            <input type="text" placeholder="Description *" name="Description" class="box1" title="Description" required>
+            <input type="text" placeholder="Online_Source" name="Online_source" class="box1" title="Online_Source">
+            <select name="Letter" id="category">
+                <?php
+                $dictionary = "SELECT * FROM `dictionary` ";
+            $sql = mysqli_query($savienojums, $dictionary); 
+               while($row = mysqli_fetch_array($sql)){
+                //Izvada visas kategorijas
+                echo "
+                <option value={$row['Letter']}>{$row['Letter']}</option>
+               ";}
+                ?>
+            </select>
             <select name="category" id="category">
                 <?php
                 $catg = "SELECT * FROM `newcategory` ";
@@ -124,7 +134,133 @@
         ?> 
 </div>
 
+<!--..edit..-->
+
+<div id="pieteiksanas">
+    <?php 
+   
+            if(isset($_POST['ready3'])){
+                $Word = $_POST['Word'];
+                $Description = $_POST['Description'];
+                $Online_source = $_POST['Online_source'];
+                $Letter = $_POST['Letter'];
+
+                $Word2 = $_POST['Word2'];
+                $Description2 = $_POST['Description2'];
+                $Letter2 = $_POST['Letter2'];
+
+
+                if(!empty($Word) && !empty($Description) && !empty($Letter)){
+                    $EditAbbreviation = "call edit('$Word', '$Description', '$Online_source', '$Letter', '$Word2', '$Description2', '$Letter2')";
+
+                    mysqli_query($savienojums, $EditAbbreviation);
+                    header("Refresh: 0; url=admin.php");
+                }else{
+                    echo "<div class='alarm red'>ERROR!</div>";
+                    header("Refresh: 5; url=admin.php");
+                }
+            }else{
+                                
+    ?>
+    <h1>Edit Abbreviation </h1>
+
+    <div class="row">
+        <form method="post">
+            <h5>Edit Abbreviation</h5>
+            <input type="text" placeholder="Word *" name="Word" class="box1" title="Word" required>
+            <input type="text" placeholder="Description *" name="Description" class="box1" title="Description" required>
+            <input type="text" placeholder="Online_Source" name="Online_source" class="box1" title="Online_Source">
+            <select name="Letter" id="category">
+                <?php
+                $dictionary = "SELECT * FROM `dictionary` ";
+            $sql = mysqli_query($savienojums, $dictionary); 
+               while($row = mysqli_fetch_array($sql)){
+
+                echo "
+                <option value={$row['Letter']}>{$row['Letter']}</option>
+               ";}
+                ?>
+            </select>
+                <br>
+
+            <h5>Select Abbreviation</h5>
+            <input type="text" placeholder="Word *" name="Word2" class="box1" title="Word" required>
+            <input type="text" placeholder="Description *" name="Description2" class="box1" title="Description" required>
+            <select name="Letter2" id="category">
+                <?php
+                $dictionary = "SELECT * FROM `dictionary` ";
+            $sql = mysqli_query($savienojums, $dictionary); 
+               while($row = mysqli_fetch_array($sql)){
+                echo "
+                <option value={$row['Letter']}>{$row['Letter']}</option>
+               ";}
+                ?>
+            </select>
+         
+            <input type="submit" name="ready3" value="Submit" class="btn">
+        </form>
+    </div>
+
+       <?php 
+            }
+        
+        ?> 
+</div>
+
+<!-- delete -->
+
+<div id="pieteiksanas">
+    <?php 
+   
+            if(isset($_POST['ready4'])){
+                $Word = $_POST['Word'];
+                $Description = $_POST['Description'];
+                $Online_source = $_POST['Online_source'];
+                $Letter = $_POST['Letter'];
+
+
+                if(!empty($Word) && !empty($Description) && !empty($Letter)){
+                    $deleteword = "call deleteword(Word, Description, Letter) VALUES ('$Word', '$Description', '$Letter')";
+
+
+                    mysqli_query($savienojums, $deleteword);
+                    header("Refresh: 0; url=admin.php");
+                }else{
+                    echo "<div class='alarm red'>ERROR!</div>";
+                    header("Refresh: 5; url=admin.php");
+                }
+            }else{
+                                
+    ?>
+    <h1>Delete Abbreviation </h1>
+
+    <div class="row">
+        <form method="post">
+            <input type="text" placeholder="Word *" name="Word" class="box1" title="Word" required>
+            <input type="text" placeholder="Description *" name="Description" class="box1" title="Description" required>
+            <select name="Letter" id="category">
+                <?php
+                $dictionary = "SELECT * FROM `dictionary` ";
+            $sql = mysqli_query($savienojums, $dictionary); 
+               while($row = mysqli_fetch_array($sql)){
+                echo "
+                <option value={$row['Letter']}>{$row['Letter']}</option>
+               ";}
+                ?>
+            </select>
+
+            <input type="submit" name="ready4" value="Submit" class="btn">
+        </form>
+    </div>
+
+       <?php 
+            }
+        
+        ?> 
+</div>
+
 <!--  -->
+
 
 <?php 
 

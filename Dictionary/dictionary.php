@@ -14,7 +14,7 @@
         <h3 class="logo">Abbreviation dictionary</h3>
 
         <nav id="navbar">
-            <a class="button" href="index.php">Back</a>
+            <a class="button2" href="index.php">Back</a>
         </nav>
        
     </header>
@@ -41,6 +41,7 @@
                     <td>{$row['Word']}</td>
                     <td>{$row['Description']}</td>
                     <td><a href='{$row['Online_source']}'target='_blank'> More info </a></td>
+                    <p class='space2'>
                 </tr>
 
                ";}

@@ -51,11 +51,11 @@ header{
     color: #ffffff;
 
 }
-.button:hover{
+.button2:hover{
     font-size: 1.1rem;
 }
 
-.button {
+.button2 {
     border: none;
     color: #ffffff;
     text-decoration: none;
@@ -84,6 +84,7 @@ header{
 /*--------------------------------------------------*/
 #pieteiksanas{
     padding:1rem 15%;
+
 }
 
 #pieteiksanas .row{
@@ -91,6 +92,7 @@ header{
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
+    
 }
 
 #pieteiksanas .row form{
@@ -160,3 +162,4 @@ header{
     padding:.5rem 3rem;
     font-size: 1rem;
 }
+

@@ -13,8 +13,8 @@
     <header>
         <h3 class="logo">Abbreviation dictionary</h3>
         <nav id="navbar">
-            <a class="button" href="login.php">Login</a>
-            <a class="button" href="test.php">Test</a>
+            <a class="button2" href="login.php">Login</a>
+            <a class="button2" href="test.php">Test</a>
         </nav>
     </header>
 
