@@ -14,31 +14,41 @@
         <h3 class="logo">Abbreviation dictionary</h3>
         <nav id="navbar">
             <a class="button2" href="login.php">Login</a>
+            <a class="button2" href="test.php">Test</a>
+            <a class="button2" href="index.php">Back</a>
         </nav>
     </header>
 
 
 
-
-    <div class='table2'>
-    <table >
-    <?php 
-            require("connect_db.php");
-            $categorylist = "SELECT * FROM `newcategory`";
-            $sql = mysqli_query($savienojums, $categorylist); 
-            while($row = mysqli_fetch_array($sql)){
-                echo "
-              
+    <section id="sakums">
+    <div class='table'>
+                <table >
                 <tr>
-                    <td>{$row['Category']}</td>
-                  </tr>
+                    <th>Word</th>
+                    <th>Description</th>
+                    <th>Online source</th>
+                </tr>
+                <?php 
+                $cat= $_GET['cat'];
+
+               require("connect_db.php");
+               $leterz = "SELECT Word, Description, Online_source FROM `newdictionary` WHERE Category_ID=$cat"; 
+               $sql = mysqli_query($savienojums, $leterz);
+               while($row = mysqli_fetch_array($sql)){
+                echo "
+                <tr>
+                    <td>{$row['Word']}</td>
+                    <td>{$row['Description']}</td>
+                    <td><a href='{$row['Online_source']}'target='_blank'> More info </a></td>
+                <p class='space2'>
+                </tr>
 
                ";}
-    ?>
-
-    </table>
-    </div>
-
+                ?>
+                </table>
+                </div>
+    </section>
 
 </body>
 </html> 

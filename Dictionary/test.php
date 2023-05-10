@@ -21,19 +21,60 @@
        
     </header>
 <br><br><br><br><br><br>
+
+
+	<div id="page-wrap">
+ 
     <h1>Abbreviation Test</h1>
-<div class="quiz-container">
-  <div id="quiz"></div>
-  <script src="jstest.js"></script>
-</div>
-<button id="previous">Previous Question</button>
-<button id="next">Next Question</button>
-<button id="submit">Submit Test</button>
-<div id="results"></div>
-<script src="jstest.js"></script>
+		
+		<form action="testresult.php" method="post" id="quiz">
+        <?php
 
+            // $Testlength= $_GET['Testlength'];
+            // $Testletter= $_GET['Testletter'];
+            $Testlength=5;
+            $Testletter='A';
+            require("connect_db.php");
 
-
-
-</body>    
+            
+                $sql = mysqli_query($savienojums,"call testqst('$Testlength', '$Testletter')");  
+               while($row = mysqli_fetch_array($sql)){
+                echo "
+                <ol>
+                <li>
+                    <h3>{$row['Word1']}</h3>
+                    
+                    <div>
+                        <input type='radio' name='question-1-answers' id='question-1-answers-A' value='A' />
+                        <label for='question-1-answers-A'>{$row['Description']}</label>
+                    </div>
+                    
+                    <div>
+                        <input type='radio' name='question-1-answers' id='question-1-answers-B' value='B' />
+                        <label for='question-1-answers-B'>{$row['Description']}</label>
+                    </div>
+                    
+                    <div>
+                        <input type='radio' name='question-1-answers' id='question-1-answers-C' value='C' />
+                        <label for='question-1-answers-C'>{$row['Description']}</label>
+                    </div>
+                    
+                    <div>
+                        <input type='radio' name='question-1-answers' id='question-1-answers-D' value='D' />
+                        <label for='question-1-answers-D'>{$row['Description']}</label>
+                    </div>
+                
+                </li>
+                </ol>
+                ";}
+ 
+            ?>
+            <input type="submit" value="Submit" class="submitbtn" />
+		
+		</form>
+	
+	</div>
+ 
+ 
+</body>   
 </html> 

@@ -80,10 +80,11 @@
                 $Description = $_POST['Description'];
                 $Online_source = $_POST['Online_source'];
                 $Letter = $_POST['Letter'];
+                $Category_ID = $_POST['Category_ID'];
 
 
                 if(!empty($Word) && !empty($Description) && !empty($Letter)){
-                    $AddWordd = "INSERT INTO newdictionary(Word, Description, Online_source, Letter, Category_ID) VALUES ('$Word', '$Description', '$Online_source', '$Letter')";
+                    $AddWordd = "INSERT INTO newdictionary(Word, Description, Online_source, Letter, Category_ID) VALUES ('$Word', '$Description', '$Online_source', '$Letter', '$Category_ID')";
 
 
                     mysqli_query($savienojums, $AddWordd);
@@ -107,20 +108,18 @@
                 $dictionary = "SELECT * FROM `dictionary` ";
             $sql = mysqli_query($savienojums, $dictionary); 
                while($row = mysqli_fetch_array($sql)){
-                //Izvada visas kategorijas
                 echo "
                 <option value={$row['Letter']}>{$row['Letter']}</option>
                ";}
                 ?>
             </select>
-            <select name="category" id="category">
+            <select name="Category_ID" id="category">
                 <?php
                 $catg = "SELECT * FROM `newcategory` ";
             $sql = mysqli_query($savienojums, $catg); 
                while($row = mysqli_fetch_array($sql)){
-                //Izvada visas kategorijas
                 echo "
-                <option value={$row['Category']}>{$row['Category']}</option>
+                <option value={$row['ID_category']}>{$row['Category']}</option>
                ";}
                 ?>
             </select>

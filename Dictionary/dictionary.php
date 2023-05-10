@@ -12,14 +12,10 @@
 <body>
     <header>
         <h3 class="logo">Abbreviation dictionary</h3>
-
         <nav id="navbar">
-            <a class="button2" href="index.php">Back</a>
+            <a class="button2" href="avi_list.php">Back</a>
         </nav>
-       
     </header>
-    
-
                 <div class='table'>
                 <table >
                 <tr>
@@ -36,14 +32,12 @@
                while($row = mysqli_fetch_array($sql)){
                 //Izvada visus ierakstus no datubāzes kuri sākas ar šo burtu
                 echo "
-              
                 <tr>
                     <td>{$row['Word']}</td>
                     <td>{$row['Description']}</td>
                     <td><a href='{$row['Online_source']}'target='_blank'> More info </a></td>
                     <p class='space2'>
                 </tr>
-
                ";}
                 ?>
                 </table>

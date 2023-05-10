@@ -6,7 +6,7 @@ h1{
   margin: 0px;
   padding: 10px;
   font-size: 20px;
-  background-color: #444;
+  background-color: #2c659f;
   color: #fff;
 }
 .question{
@@ -58,4 +58,35 @@ button:hover{
   position: relative;
   height: 200px;
   margin-top: 40px;
+}
+
+/* newnenwenwnewnenwenwnews */
+body{ font: 14px Georgia, serif; }
+ 
+#page-wrap { width: 500px; margin: 0 auto;}
+ 
+h1  { margin: 25px 0; font: 18px Georgia, Serif; text-transform: uppercase; letter-spacing: 3px; }
+ 
+#quiz input {
+    vertical-align: middle;
+}
+ 
+#quiz ol {
+   margin: 0 0 10px 20px;
+}
+ 
+#quiz ol li {
+   margin: 0 0 20px 0;
+}
+ 
+#quiz ol li div {
+   padding: 4px 0;
+}
+ 
+#quiz h3 {
+   font-size: 17px; margin: 0 0 1px 0; color: #2c659f;
+}
+ 
+#results {
+    font: 44px Georgia, Serif;
 }
