@@ -25,7 +25,7 @@
                 </tr>
                 <?php 
                 $letter= $_GET['letter'];
-                //Saņem burtu no index.php
+                //Saņem burtu no avi_list.php
                require("connect_db.php");
                //Savienojas ar datubāzi
                $sql = mysqli_query($savienojums,"call DisplayWords('$letter')"); 
@@ -36,8 +36,6 @@
                     <td>{$row['Word']}</td>
                     <td>{$row['Description']}</td>
                     <td><a href='{$row['Online_source']}'target='_blank'> More info </a></td>
-                    <p class='space2'>
-                </tr>
                ";}
                 ?>
                 </table>

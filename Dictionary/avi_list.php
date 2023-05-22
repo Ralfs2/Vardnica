@@ -23,6 +23,57 @@
 
     <section id="sakums">
         <div class="content">
+        <form action="" method="GET">
+            <div class="input-group mb-3">
+                <input type="text" name="search" required value="<?php if(isset($_GET['search'])){echo $_GET['search']; } ?>" class="form-control" placeholder="Search data">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Word</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+<?php 
+require("connect_db.php");
+
+
+if(isset($_GET['search']))
+{
+    $filtervalues = $_GET['search'];
+    $query = "SELECT Word, Description FROM `flight_dictionary` WHERE Word LIKE '%$filtervalues%' ";
+    $query_run = mysqli_query($savienojums, $query);
+
+    if(mysqli_num_rows($query_run) > 0)
+    {
+        foreach($query_run as $items)
+        {
+            ?>
+            <tr>
+                <td><?= $items['Word']; ?></td>
+                <td><?= $items['Description']; ?></td>
+            </tr>
+            <?php
+        }
+    }
+    else
+    {
+        ?>
+            <tr>
+                <td>No Record Found</td>
+            </tr>
+        <?php
+    }
+}
+?>
+
+
+
+
+   
         <table >
         <tr>
             <th>Letter</th>

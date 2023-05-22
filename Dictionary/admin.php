@@ -132,81 +132,8 @@
         
         ?> 
 </div>
+<!-- delete   -->
 
-<!--..edit..-->
-
-<div id="pieteiksanas">
-    <?php 
-   
-            if(isset($_POST['ready3'])){
-                $Word = $_POST['Word'];
-                $Description = $_POST['Description'];
-                $Online_source = $_POST['Online_source'];
-                $Letter = $_POST['Letter'];
-
-                $Word2 = $_POST['Word2'];
-                $Description2 = $_POST['Description2'];
-                $Letter2 = $_POST['Letter2'];
-
-
-                if(!empty($Word) && !empty($Description) && !empty($Letter)){
-                    $EditAbbreviation = "call edit('$Word', '$Description', '$Online_source', '$Letter', '$Word2', '$Description2', '$Letter2')";
-
-                    mysqli_query($savienojums, $EditAbbreviation);
-                    header("Refresh: 0; url=admin.php");
-                }else{
-                    echo "<div class='alarm red'>ERROR!</div>";
-                    header("Refresh: 5; url=admin.php");
-                }
-            }else{
-                                
-    ?>
-    <h1>Edit Abbreviation </h1>
-
-    <div class="row">
-        <form method="post">
-            <h5>Edit Abbreviation</h5>
-            <input type="text" placeholder="Word *" name="Word" class="box1" title="Word" required>
-            <input type="text" placeholder="Description *" name="Description" class="box1" title="Description" required>
-            <input type="text" placeholder="Online_Source" name="Online_source" class="box1" title="Online_Source">
-            <select name="Letter" id="category">
-                <?php
-                $dictionary = "SELECT * FROM `dictionary` ";
-            $sql = mysqli_query($savienojums, $dictionary); 
-               while($row = mysqli_fetch_array($sql)){
-
-                echo "
-                <option value={$row['Letter']}>{$row['Letter']}</option>
-               ";}
-                ?>
-            </select>
-                <br>
-
-            <h5>Select Abbreviation</h5>
-            <input type="text" placeholder="Word *" name="Word2" class="box1" title="Word" required>
-            <input type="text" placeholder="Description *" name="Description2" class="box1" title="Description" required>
-            <select name="Letter2" id="category">
-                <?php
-                $dictionary = "SELECT * FROM `dictionary` ";
-            $sql = mysqli_query($savienojums, $dictionary); 
-               while($row = mysqli_fetch_array($sql)){
-                echo "
-                <option value={$row['Letter']}>{$row['Letter']}</option>
-               ";}
-                ?>
-            </select>
-         
-            <input type="submit" name="ready3" value="Submit" class="btn">
-        </form>
-    </div>
-
-       <?php 
-            }
-        
-        ?> 
-</div>
-
-<!-- delete -->
 
 <div id="pieteiksanas">
     <?php 
@@ -258,8 +185,61 @@
         ?> 
 </div>
 
-<!--  -->
+<!--..edit..-->
+<div id="pieteiksanas">
 
+<h1>Update Abbreviation </h1>
+        <form action="" method="GET">
+            <div class="input-group mb-3">
+                <input class="box1" type="text" name="search" required value="<?php if(isset($_GET['search'])){echo $_GET['search']; } ?>" class="form-control" placeholder="Search data">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Word</th>
+                    <th>Description</th>
+                    <th>Update</th>
+                </tr>
+            </thead>
+<?php 
+require("connect_db.php");
+
+
+if(isset($_GET['search']))
+{
+    $filtervalues = $_GET['search'];
+    $query = "SELECT Word, Description, idLetter FROM `flight_dictionary` WHERE Word LIKE '%$filtervalues%' ";
+    $query_run = mysqli_query($savienojums, $query);
+
+    if(mysqli_num_rows($query_run) > 0)
+    {
+        foreach($query_run as $items)
+        {
+            ?>
+            <tr>
+                <td><?= $items['Word']; ?></td>
+                <td><?= $items['Description']; ?></td>
+                <td><a href="update-process.php?id=<?= $items['idLetter']; ?>">Update</a></td>
+            </tr>
+            <?php
+        }
+    }
+    else
+    {
+        ?>
+            <tr>
+                <td>No Record Found</td>
+            </tr>
+        <?php
+    }
+}
+?>
+</div>
+
+<!--  -->
 
 <?php 
 
@@ -270,11 +250,6 @@
 
   
 ?>
-
-
-
-
-
 
 
 </body>
