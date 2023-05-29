@@ -40,7 +40,6 @@
         </div>
        
         <input type="hidden" name="idLetter" class="box1" value="<?php echo $row['idLetter']; ?>">
-        
             <br>
             Word: <br>
         <input type="text" name="Word" class="box1"  value="<?php echo $row['Word']; ?>">
