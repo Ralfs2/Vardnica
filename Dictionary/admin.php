@@ -200,8 +200,10 @@ if(isset($_GET['search']))
     $query = "SELECT Word, Description, idLetter FROM `flight_dictionary` WHERE Word LIKE '%$filtervalues%' ";
     $query_run = mysqli_query($savienojums, $query);
 
-    if(mysqli_num_rows($query_run) > 0){
-        foreach($query_run as $items){
+    if(mysqli_num_rows($query_run) > 0)
+    {
+        foreach($query_run as $items)
+        {
             ?>
             <tr>
                 <td><?= $items['Word']; ?></td>
