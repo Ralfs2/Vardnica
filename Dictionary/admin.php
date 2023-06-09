@@ -37,20 +37,27 @@
     <?php 
             if(isset($_POST['gatavs'])){
                 $Category = $_POST['Category'];
+                // definē mainīgo "Category"
                 if(!empty($Category) ){
                     $AddWord = "INSERT INTO newcategory(Category) VALUES ('$Category')";
+                    // Ievada kategorijas nosukumu
                     mysqli_query($savienojums, $AddWord);
                     header("Refresh: 0; url=admin.php");
+                    // pārlādē lapu
                 }else{
                     echo "<div class='alarm red'>ERROR!</div>";
+                    // izvada kļūdas paziņojumu
                 }
             }else{                     
     ?>
     <h1>New Category</h1>
     <div class="row">
         <form method="post">
-            <input type="text" placeholder="Category name *" name="Category" class="box1" title="Category" required>
+            <input type="text" placeholder="Category name *" name="Category" 
+            class="box1" title="Category" required>
+            <!-- ievades lauks "Category" -->
             <input type="submit" name="gatavs" value="Submit" class="btn">
+            <!-- poga, kas pievieno jauno kategoriju -->
         </form>
     </div>
        <?php 
@@ -180,8 +187,11 @@
         <form action="" method="GET">
             <div class="input-group mb-3">
                 <input class="box1" type="text" name="search" required value=
-                "<?php if(isset($_GET['search'])){echo $_GET['search']; } ?>" class="form-control" placeholder="Search data">
+                "<?php if(isset($_GET['search'])){echo $_GET['search']; } ?>" 
+                class="form-control" placeholder="Search data">
+                <!-- meklēšanas joslas ievades lauks -->
                 <button type="submit" class="btn btn-primary">Search</button>
+                <!-- poga, kas izsauc meklēšanu -->
             </div>
         </form>
         <table>
@@ -197,9 +207,10 @@ require("connect_db.php");
 if(isset($_GET['search']))
 {
     $filtervalues = $_GET['search'];
-    $query = "SELECT Word, Description, idLetter FROM `flight_dictionary` WHERE Word LIKE '%$filtervalues%' ";
+    $query = "SELECT Word, Description, idLetter FROM `flight_dictionary` 
+    WHERE Word LIKE '%$filtervalues%' ";
+    // parāda visus datus kuri atbilst meklētai vērtībai
     $query_run = mysqli_query($savienojums, $query);
-
     if(mysqli_num_rows($query_run) > 0)
     {
         foreach($query_run as $items)
@@ -208,7 +219,9 @@ if(isset($_GET['search']))
             <tr>
                 <td><?= $items['Word']; ?></td>
                 <td><?= $items['Description']; ?></td>
-                <td><a href="update-process.php?id=<?= $items['idLetter']; ?>">Update</a></td>
+                <td><a href="update-process.php?id=<?= 
+                $items['idLetter']; ?>">Update</a></td>
+                <!-- parāda visas vērtības un piedāvā rediģēt terminu -->
             </tr>
             <?php
         }

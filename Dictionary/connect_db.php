@@ -7,7 +7,7 @@
     if(!$savienojums){
         die("Pieslēgties neizdevās: ".mysqli_connect_error());
     }else{
-        # echo "Savienojums ar datubāzi ir veiksmīgi izveidots!";
+        // izveido savienojumu ar datubāzi
     }
    
 ?>

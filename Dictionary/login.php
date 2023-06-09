@@ -34,24 +34,25 @@
 						$Password = mysqli_real_escape_string($savienojums, $_POST["Password"]);
 						$sqlVaicajums = "SELECT * FROM admin WHERE Name = '$Name'";
 						$rezultats = mysqli_query($savienojums, $sqlVaicajums);
-
 						if(mysqli_num_rows($rezultats) == 1){
 							while($row = mysqli_fetch_array($rezultats)){
 								if(password_verify($Password, $row['Password'])){
 									$_SESSION["Name"] = $Name;
 									header("location:admin.php");
+						// pārbauda ievades datus, ja ir pareizi tad atver administratora lapu
 								}else{
 									echo "ERROR!";
+									// kļūdas paziņojums
 								}
 							}
 						}else{
 							echo "ERROR!";
+							// kļūdas paziņojums
 						}
-
 					}
-
 					if(isset($GET['logout'])){
 						session_destroy();
+						// izlogojas no sistēmas
 					}
 				?>
 

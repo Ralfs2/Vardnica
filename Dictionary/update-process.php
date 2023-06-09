@@ -12,12 +12,15 @@
     if(count($_POST)>0) {
         mysqli_query($savienojums,"UPDATE `flight_dictionary` set idLetter='" . $_POST['idLetter'] . "',
          Word='" . $_POST['Word'] . "', Description='" . $_POST['Description'] . "', Online_source='" . 
-         $_POST['Online_source'] . "' ,Letter='" . $_POST['Letter'] . "' WHERE idLetter='" . $_POST['idLetter'] . "'");
-
+         $_POST['Online_source'] . "' ,Letter='" . $_POST['Letter'] . 
+         "' WHERE idLetter='" . $_POST['idLetter'] . "'");
+// rediģē datus kuri tika ievadīti
         $message = "Record Modified Successfully";
     }
     $idLetter= $_GET['id'];
+    // saņem termina id kuru rediģēt
     $result = mysqli_query($savienojums,"SELECT * FROM `flight_dictionary` WHERE idLetter='$idLetter'");
+    // izvēlas terminu no datubāzes kuru izvēlējās rediģēt administratora lapā
     $row= mysqli_fetch_array($result);
     
 ?>
@@ -37,30 +40,28 @@
         </div>
         <div style="padding-bottom:5px;">
             <a href="admin.php">Back</a>
+            <!-- atgriešanās uz administratora lapu -->
         </div>
-       
-        <input type="hidden" name="idLetter" class="box1" value="<?php echo $row['idLetter']; ?>">
-            <br>
+        <input type="hidden" name="idLetter" class="box1" value="<?php echo $row['idLetter']; ?>"><br>
             Word: <br>
-        <input type="text" name="Word" class="box1"  value="<?php echo $row['Word']; ?>">
-            <br>
+        <input type="text" name="Word" class="box1"  value="<?php echo $row['Word']; ?>"><br>
             Description :<br>
-        <input type="text" name="Description" class="box1" value="<?php echo $row['Description']; ?>">
-            <br>
+        <input type="text" name="Description" class="box1" value="<?php echo $row['Description']; ?>"><br>
             Online_source:<br>
-        <input type="text" name="Online_source" class="box1" value="<?php echo $row['Online_source']; ?>">
-            <br>
+        <input type="text" name="Online_source" class="box1" value="<?php echo $row['Online_source']; ?>"><br>
             Letter:<br>
-        <input type="text" name="Letter" class="box1" value="<?php echo $row['Letter']; ?>">
-            <br>
+        <input type="text" name="Letter" class="box1" value="<?php echo $row['Letter']; ?>"><br>
+        <!-- teksta ievades lauiki kurus aizpilda, lai rediģētu datus -->
         <input type="submit" name="submit" value="Submit" class="btn">
-
+<!-- poga, lai apstiprinātu datu rediģēšanu -->
     </form>
     <?php 
 
     }else{
         echo " <div class='alert red'> YOU HAVE NO ACCESS HERE!</div>";
+        // paziņojums par neatļautu piekļuvi
         header("Refresh: 0; url=index.php");
+        // atveras index lapa
     }
 
   

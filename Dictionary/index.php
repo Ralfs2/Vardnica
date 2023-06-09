@@ -29,6 +29,7 @@
     <?php 
             require("connect_db.php");
             $categorylist = "SELECT * FROM `newcategory` WHERE NOT ID_category = 1";
+            // izvada kategoriju nosaukumus
             $sql = mysqli_query($savienojums, $categorylist); 
             while($row = mysqli_fetch_array($sql)){
                 echo "
@@ -36,9 +37,8 @@
                 <tr>
                     <td><a href='list.php?cat={$row['ID_category']}'>{$row['Category']}</a></td>
                   </tr>
-
                ";}
-              
+            //   poga, kas atver izvēlēto kategoriju
     ?>
     </table>
     </div>
